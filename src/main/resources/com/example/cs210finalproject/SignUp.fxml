@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="250.0" spacing="5.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="250.0" spacing="5.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs210finalproject.SignUpController">
    <children>
       <Label />
       <Label text="Welcome To DSS">
@@ -25,14 +25,15 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="emalilSignUp" />
+      <TextField fx:id="emailSignUp" />
       <Label text="Create Password">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <TextField fx:id="passwordSignUp" />
+      <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#onSignUpButtonClick" text="Click To Sign Up" />
       <Label contentDisplay="TOP" prefHeight="46.0" prefWidth="250.0" text="Password Must Contain 2 Or More of &quot;!,@,#,$,%,^,&amp;,*,&quot;" textAlignment="CENTER" />
-      <Button fx:id="signInButton" mnemonicParsing="false" onAction="#onSignInButtonClick" text="Already Have An Account? Click To SignIn" />
+      <Button fx:id="logInButton" mnemonicParsing="false" onAction="#onLogInButtonClick" text="Already Have An Account? Click To SignIn" />
    </children>
 </VBox>

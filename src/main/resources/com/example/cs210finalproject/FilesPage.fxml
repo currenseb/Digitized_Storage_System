@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs210finalproject.FilesPageController">
    <children>
-      <TextField alignment="TOP_CENTER" promptText="Enter File Name">
+      <TextField fx:id="overallFileName" alignment="TOP_CENTER" promptText="Enter File Name">
          <font>
             <Font size="36.0" />
          </font>
@@ -17,8 +17,8 @@
          <children>
             <VBox prefHeight="547.0" prefWidth="200.0">
                <children>
-                  <TextField alignment="CENTER" prefWidth="136.0" promptText="Enter Name" />
-                  <Button fx:id="accessFileButton" mnemonicParsing="false" onAction="#onAccessFileButtonClick" prefHeight="25.0" prefWidth="225.0" text="Access File" />
+                  <TextField fx:id="topLeftFileName" alignment="CENTER" prefWidth="136.0" promptText="Enter Name" />
+                  <Button fx:id="accessTopLeftFileButton" mnemonicParsing="false" onAction="#onAccessTopLeftFileButtonClick" prefHeight="25.0" prefWidth="225.0" text="Access File" />
                </children>
             </VBox>
             <VBox prefHeight="547.0" prefWidth="200.0" />

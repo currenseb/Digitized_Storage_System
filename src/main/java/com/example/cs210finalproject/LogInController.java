@@ -1,14 +1,35 @@
 package com.example.cs210finalproject;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
 
 public class LogInController {
+
+    // Variables
     @FXML
-    private Label welcomeText;
+    private TextField usernameLogIn;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private TextField passwordLogIn;
+
+    @FXML
+    private Button logInButton;
+
+    @FXML
+    private Button signUpBotton;
+
+    // Methods
+    @FXML
+    protected void onLogInButtonClick() {
+
     }
+
+    @FXML
+    protected void onSignUpButtonClick() {
+
+    }
+
+
 }
+
