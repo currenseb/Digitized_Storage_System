@@ -20,6 +20,15 @@ public class FilesPageController {
     // Methods
     @FXML
     protected void onAccessTopLeftFileButtonClick() {
-
+        String fileName = topLeftFileName.getText().trim();
+        if (!fileName.isEmpty()) {
+            UserFile file = new UserFile(fileName);
+            try {
+                file.openWithDefaultApp();
+            } catch (Exception e) {
+                System.out.println("Failed to open file: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
 }
