@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.cs210finalproject.HomePage"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs210finalproject.HomePageController">
+   <children>
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="377.0" text="Home Page">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label text="Choose A File To Access:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="file1Name" promptText="File 1: (Enter Name)" />
+      <Button fx:id="file1Button" mnemonicParsing="false" onAction="#onFile1ButtonClick" text="Open File 1" />
+      <TextField fx:id="file2Name" promptText="File 2: (Enter Name)" />
+      <Button fx:id="file2Button" mnemonicParsing="false" onAction="#onFile2ButtonClick" text="Open File 2" />
+      <TextField fx:id="file3Name" promptText="File 3: (Enter Name)" />
+      <Button fx:id="file3Button" mnemonicParsing="false" onAction="#onFile3ButtonClick" text="Open File 3" />
+      <TextField fx:id="file4Name" promptText="File 4: (Enter Name)" />
+      <Button fx:id="file4Button" mnemonicParsing="false" onAction="#onFile4ButtonClick" text="Open File 4" />
+      <TextField fx:id="file5Name" promptText="File 5: (Enter Name)" />
+      <Button fx:id="file5Button" mnemonicParsing="false" onAction="#onFile5ButtonClick" text="Open File 5" />
+      <Pane prefHeight="71.0" prefWidth="360.0" />
+      <HBox prefHeight="100.0" prefWidth="360.0">
+         <children>
+            <Button fx:id="profilePageButton" mnemonicParsing="false" onAction="#onProfilePageButtonClick" text="Profile Page" />
+            <Button fx:id="notificationPageButton" mnemonicParsing="false" onAction="#onNotificationPageButtonClick" text="Notification Page" />
+            <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Log In Page" />
+            <Button fx:id="singUpPageButton" mnemonicParsing="false" onAction="#onSignUpPageButtonClick" text="Sign Up Page" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

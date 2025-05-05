@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs210finalproject.ProfilePageController">
+   <children>
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="420.0" text="Your Profile">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label text="Email Information">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userEmail" />
+      <Button fx:id="revealEmailButton" mnemonicParsing="false" onAction="#onRevealEmailButtonClick" text="Reveal Email" />
+      <TextField fx:id="newUserEmail" promptText="Enter New Email" />
+      <Button fx:id="changeEmailButton" mnemonicParsing="false" onAction="#onChangeEmailButtonClick" text="Change Email" />
+      <Label text="Username Information">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userUsername" />
+      <Button fx:id="revealUsernameButton" mnemonicParsing="false" onAction="#onRevealUsernameButtonClick" text="Reveal Username" />
+      <TextField fx:id="newUserUsername" promptText="Enter New Username" />
+      <Button fx:id="changeUsernameButton" mnemonicParsing="false" onAction="#onChangeUsernameButtonClick" text="Change Username" />
+      <Label text="Password Information">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userPassword" />
+      <Button fx:id="revealPasswordButton" mnemonicParsing="false" onAction="#onRevealPasswordButtonClick" text="Reveal Password" />
+      <TextField fx:id="newUserPassword" promptText="Enter New Password" />
+      <Button fx:id="changePasswordButton" mnemonicParsing="false" onAction="#onChangePasswordButtonClick" text="Change Password" />
+      <TextArea editable="false" prefHeight="21.0" prefWidth="425.0" text="Password Must Contain 2 Or More of &quot;!,@,#,$,%,^,&amp;,*,&quot;" />
+      <HBox prefHeight="49.0" prefWidth="425.0">
+         <children>
+            <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#onHomePageButtonClick" text="Home Page" />
+            <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Log In Page" />
+            <Button fx:id="signUpPageButton" mnemonicParsing="false" onAction="#onSignUpPageButtonClick" text="Sign Up Page" />
+            <Button fx:id="filesPageButton" mnemonicParsing="false" onAction="#onFilesPageButtonClick" text="Files Page" />
+            <Button fx:id="notificationPageButton" mnemonicParsing="false" onAction="#onNotificationPageButtonClick" text="Notification Page" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
