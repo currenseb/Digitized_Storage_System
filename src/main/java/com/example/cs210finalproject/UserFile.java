@@ -50,5 +50,10 @@ public class UserFile {
         }
     }
 
+    public String createFilePath() {
+        this.filePath = "MainRoot/" + ownerUsername + "/" + fileName + ".txt";
+        return this.filePath;
+    }
+
 }
 
