@@ -25,13 +25,12 @@ public class UserFile {
     public String getFilePath() { return filePath; }
     public String getOwnerUsername() { return ownerUsername; }
 
-
-
     public void openWithDefaultApp() throws IOException {
-        File file = new File(fileName);
+        File file = new File(filePath); // <-- Use full path
         if (!file.exists()) {
+            file.getParentFile().mkdirs(); // Ensure folders exist
             file.createNewFile();
-            System.out.println("Created a new File named : " + fileName);
+            System.out.println("Created a new File at: " + filePath);
         }
         if (Desktop.isDesktopSupported()) {
             Desktop.getDesktop().open(file);
@@ -41,11 +40,11 @@ public class UserFile {
     }
 
     public boolean deleteFile() {
-        File file = new File(fileName);
+        File file = new File(filePath); // <-- Use full path
         if (file.exists()) {
             return file.delete();
         } else {
-            System.out.println("The file doesn't exist: " + fileName);
+            System.out.println("The file doesn't exist: " + filePath);
             return false;
         }
     }
@@ -54,6 +53,4 @@ public class UserFile {
         this.filePath = "MainRoot/" + ownerUsername + "/" + fileName + ".txt";
         return this.filePath;
     }
-
 }
-

@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class NotificationController {
 
-
     // Variables
     @FXML
     private TextField reminder1Text;

@@ -3,6 +3,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 public class HomePageController {
 
@@ -78,27 +83,64 @@ public class HomePageController {
     @FXML
     protected void onProfilePageButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
+            Scene scene = new Scene(loader.load(), 425, 475);
+
+            // Get current stage from the button (or any node)
+            Stage stage = (Stage) profilePageButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void onNotificationPageButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
+            Scene scene = new Scene(loader.load(), 425, 475);
+
+            // Get current stage from the button (or any node)
+            Stage stage = (Stage) notificationPageButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void onLogInPageButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
+            Scene scene = new Scene(loader.load(), 250, 350);
+
+            // Get current stage from the button (or any node)
+            Stage stage = (Stage) logInPageButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void onSignUpPageButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+            Scene scene = new Scene(loader.load(), 360, 375);
+
+            // Get current stage from the button (or any node)
+            Stage stage = (Stage) signUpPageButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-
-
-
-
-
-
 }

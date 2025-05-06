@@ -37,7 +37,7 @@
             <Button fx:id="profilePageButton" mnemonicParsing="false" onAction="#onProfilePageButtonClick" text="Profile Page" />
             <Button fx:id="notificationPageButton" mnemonicParsing="false" onAction="#onNotificationPageButtonClick" text="Notification Page" />
             <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Log In Page" />
-            <Button fx:id="singUpPageButton" mnemonicParsing="false" onAction="#onSignUpPageButtonClick" text="Sign Up Page" />
+            <Button fx:id="signUpPageButton" mnemonicParsing="false" onAction="#onSignUpPageButtonClick" text="Sign Up Page" />
          </children>
       </HBox>
    </children>
