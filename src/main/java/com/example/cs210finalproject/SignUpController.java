@@ -30,7 +30,7 @@ public class SignUpController {
     // Methods
     @FXML
     protected void onSignUpButtonClick() {
-    // juancarlos, implement with user data
+    // juancarlos, implement with user data.
     }
 
     @FXML void onLogInPageButtonClick() {
