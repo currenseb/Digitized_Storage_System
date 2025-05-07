@@ -3,26 +3,62 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs210finalproject.FilesPageController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs210finalproject.FilesPageController">
    <children>
       <TextField fx:id="overallFileName" alignment="TOP_CENTER" promptText="Enter File Name">
          <font>
             <Font size="36.0" />
          </font>
       </TextField>
-      <HBox prefHeight="551.0" prefWidth="600.0">
+      <HBox prefHeight="325.0" prefWidth="450.0">
          <children>
-            <VBox prefHeight="547.0" prefWidth="200.0">
+            <VBox prefHeight="350.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="topLeftFileName" alignment="CENTER" prefWidth="136.0" promptText="Enter Name" />
-                  <Button fx:id="accessTopLeftFileButton" mnemonicParsing="false" onAction="#onAccessTopLeftFileButtonClick" prefHeight="25.0" prefWidth="225.0" text="Access File" />
+                  <Button fx:id="accessTopLeftFileButton" mnemonicParsing="false" onAction="#onAccessTopLeftFileButtonClick" prefHeight="25.0" prefWidth="225.0" text="Access Level 1 File" />
+                  <Pane prefHeight="50.0" prefWidth="200.0" />
+                  <TextField fx:id="middleLeftFileName" alignment="TOP_CENTER" promptText="Enter Name" />
+                  <Button fx:id="accessMiddleLeftFileButton" mnemonicParsing="false" onAction="#onAccessMiddleLeftFileButtonClick" prefHeight="25.0" prefWidth="208.0" text="Access Level 2 File" />
+                  <Pane prefHeight="50.0" prefWidth="200.0" />
+                  <TextField fx:id="bottomLeftFileName" alignment="TOP_CENTER" promptText="Enter Name" />
+                  <Button fx:id="accessBottomRightFileButton" mnemonicParsing="false" onAction="#onAccessBottomLeftFileButtonClick" prefHeight="25.0" prefWidth="211.0" text="Access Level 3 File" />
                </children>
             </VBox>
-            <VBox prefHeight="547.0" prefWidth="200.0" />
-            <VBox prefHeight="547.0" prefWidth="200.0" />
+            <VBox prefHeight="547.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="topMiddleFileName" alignment="TOP_CENTER" promptText="Enter Name" />
+                  <Button fx:id="accessTopMiddleFileButton" mnemonicParsing="false" onAction="#onAccessTopMiddleFileButtonClick" prefHeight="25.0" prefWidth="207.0" text="Access Level 1 File" />
+                  <Pane prefHeight="50.0" prefWidth="200.0" />
+                  <TextField fx:id="middleMiddleFileName" alignment="TOP_CENTER" promptText="Enter  Name" />
+                  <Button fx:id="accessMiddleMiddleFileButton" mnemonicParsing="false" onAction="#onAccessMiddleMiddleFileButtonClick" prefHeight="25.0" prefWidth="212.0" text="Access Level 2 File" />
+                  <Pane prefHeight="50.0" prefWidth="200.0" />
+                  <TextField fx:id="bottomMiddleFileName" alignment="TOP_CENTER" promptText="Enter  Name" />
+                  <Button fx:id="accessBottomMiddleFileButton" mnemonicParsing="false" onAction="#onAccessBottomMiddleFileButtonClick" prefHeight="25.0" prefWidth="319.0" text="Access Level 3 File" />
+               </children></VBox>
+            <VBox prefHeight="547.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="topRightFileName" alignment="TOP_CENTER" promptText="Enter Name" />
+                  <Button fx:id="accessTopRightFileButton" mnemonicParsing="false" onAction="#onAccessTopRightFileButtonClick" prefHeight="25.0" prefWidth="204.0" text="Access Level 1 File" />
+                  <Pane prefHeight="50.0" prefWidth="200.0" />
+                  <TextField fx:id="middleRightFileName" alignment="TOP_CENTER" promptText="Enter Name" />
+                  <Button fx:id="accessMiddleRightFileButton" mnemonicParsing="false" onAction="#onAccessMiddleRightFileButtonClick" prefHeight="25.0" prefWidth="235.0" text="Access Level 2 File" />
+                  <Pane prefHeight="50.0" prefWidth="200.0" />
+                  <TextField fx:id="bottomRightFileName" alignment="TOP_CENTER" promptText="Enter Name" />
+                  <Button fx:id="accessBottomRightFileButton" mnemonicParsing="false" onAction="#onAccessBottomRightFileButtonClick" prefHeight="25.0" prefWidth="222.0" text="Access Level 3 File" />
+               </children></VBox>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#onHomePageButtonClick" text="Home Page" />
+            <Button fx:id="notificationPageButton" mnemonicParsing="false" onAction="#onNotificationPageButtonClick" text="Notification Page" />
+            <Button fx:id="profilePageButton" mnemonicParsing="false" onAction="#onProfilePageButtonClick" text="Profile Page" />
+            <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Log In Page" />
+            <Button fx:id="signUpPageButton" mnemonicParsing="false" onAction="#onSignUpPageButtonClick" text="Sign Up Page" />
          </children>
       </HBox>
    </children>

@@ -9,7 +9,7 @@ public class FilesPage extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(FilesPage.class.getResource("FilesPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 450, 425);
         stage.setScene(scene);
         stage.show();
     }

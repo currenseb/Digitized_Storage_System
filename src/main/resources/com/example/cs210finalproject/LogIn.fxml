@@ -12,7 +12,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
-      <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="0.0" prefWidth="210.0" text="Welcome To DSS" textAlignment="CENTER">
+      <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="0.0" prefWidth="210.0" text="Welcome Back To DSS" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -29,7 +29,7 @@
          </font>
       </Label>
       <TextField fx:id="passwordLogIn" />
-      <Button fx:id="logInButton" mnemonicParsing="false" onAction="#onLogInButtonClick" text="Click To Log In" />
-      <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#onSignUpButtonClick" text="New? Click to Sign up" />
+      <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Click To Log In" />
+      <Button fx:id="signUpPageButton" mnemonicParsing="false" onAction="#onSignUpPageButtonClick" text="New? Click to Sign up" />
    </children>
 </VBox>

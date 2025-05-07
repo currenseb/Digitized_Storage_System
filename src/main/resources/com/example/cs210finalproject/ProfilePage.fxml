@@ -43,13 +43,12 @@
       <TextField fx:id="newUserPassword" promptText="Enter New Password" />
       <Button fx:id="changePasswordButton" mnemonicParsing="false" onAction="#onChangePasswordButtonClick" text="Change Password" />
       <TextArea editable="false" prefHeight="21.0" prefWidth="425.0" text="Password Must Contain 2 Or More of &quot;!,@,#,$,%,^,&amp;,*,&quot;" />
-      <HBox prefHeight="49.0" prefWidth="425.0">
+      <HBox alignment="TOP_CENTER" prefHeight="49.0" prefWidth="425.0">
          <children>
             <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#onHomePageButtonClick" text="Home Page" />
+            <Button fx:id="notificationPageButton" mnemonicParsing="false" onAction="#onNotificationPageButtonClick" text="Notification Page" />
             <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Log In Page" />
             <Button fx:id="signUpPageButton" mnemonicParsing="false" onAction="#onSignUpPageButtonClick" text="Sign Up Page" />
-            <Button fx:id="filesPageButton" mnemonicParsing="false" onAction="#onFilesPageButtonClick" text="Files Page" />
-            <Button fx:id="notificationPageButton" mnemonicParsing="false" onAction="#onNotificationPageButtonClick" text="Notification Page" />
          </children>
       </HBox>
    </children>

@@ -34,6 +34,6 @@
       <TextField fx:id="passwordSignUp" />
       <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#onSignUpButtonClick" text="Click To Sign Up" />
       <Label contentDisplay="TOP" prefHeight="46.0" prefWidth="250.0" text="Password Must Contain 2 Or More of &quot;!,@,#,$,%,^,&amp;,*,&quot;" textAlignment="CENTER" />
-      <Button fx:id="logInButton" mnemonicParsing="false" onAction="#onLogInButtonClick" text="Already Have An Account? Click To SignIn" />
+      <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Already Have An Account? Click To SignIn" />
    </children>
 </VBox>
