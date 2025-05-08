@@ -25,7 +25,7 @@
                   <Button fx:id="accessMiddleLeftFileButton" mnemonicParsing="false" onAction="#onAccessMiddleLeftFileButtonClick" prefHeight="25.0" prefWidth="208.0" text="Access Level 2 File" />
                   <Pane prefHeight="50.0" prefWidth="200.0" />
                   <TextField fx:id="bottomLeftFileName" alignment="TOP_CENTER" promptText="Enter Name" />
-                  <Button fx:id="accessBottomRightFileButton" mnemonicParsing="false" onAction="#onAccessBottomLeftFileButtonClick" prefHeight="25.0" prefWidth="211.0" text="Access Level 3 File" />
+                  <Button fx:id="accessBottomLeftFileButton" mnemonicParsing="false" onAction="#onAccessBottomLeftFileButtonClick" prefHeight="25.0" prefWidth="211.0" text="Access Level 3 File" />
                </children>
             </VBox>
             <VBox prefHeight="547.0" prefWidth="200.0">

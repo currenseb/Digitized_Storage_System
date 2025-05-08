@@ -89,8 +89,52 @@ public class FilesPageController {
     private Button signUpPageButton;
 
     // Methods
+    private FilePageData dataModel;
+
+    public void setDataModel(FilePageData model) {
+        this.dataModel = model;
+        loadDataIntoFields();
+    }
+
+    private void loadDataIntoFields() {
+        if (dataModel == null) return;
+
+        overallFileName.setText(dataModel.overallFileName);
+        topLeftFileName.setText(dataModel.topLeftFileName);
+        topMiddleFileName.setText(dataModel.topMiddleFileName);
+        topRightFileName.setText(dataModel.topRightFileName);
+        middleLeftFileName.setText(dataModel.middleLeftFileName);
+        middleMiddleFileName.setText(dataModel.middleMiddleFileName);
+        middleRightFileName.setText(dataModel.middleRightFileName);
+        bottomLeftFileName.setText(dataModel.bottomLeftFileName);
+        bottomMiddleFileName.setText(dataModel.bottomMiddleFileName);
+        bottomRightFileName.setText(dataModel.bottomRightFileName);
+
+        if (dataModel == null) {
+            System.out.println("loadDataIntoFields: dataModel is null!");
+            return;
+        }
+        topLeftFileName.setText(dataModel.topLeftFileName);
+    }
+
+    private void saveDataToModel() {
+        if (dataModel == null) return;
+
+        dataModel.overallFileName = overallFileName.getText().trim();
+        dataModel.topLeftFileName = topLeftFileName.getText().trim();
+        dataModel.topMiddleFileName = topMiddleFileName.getText().trim();
+        dataModel.topRightFileName = topRightFileName.getText().trim();
+        dataModel.middleLeftFileName = middleLeftFileName.getText().trim();
+        dataModel.middleMiddleFileName = middleMiddleFileName.getText().trim();
+        dataModel.middleRightFileName = middleRightFileName.getText().trim();
+        dataModel.bottomLeftFileName = bottomLeftFileName.getText().trim();
+        dataModel.bottomMiddleFileName = bottomMiddleFileName.getText().trim();
+        dataModel.bottomRightFileName = bottomRightFileName.getText().trim();
+    }
+
     @FXML
     protected void onAccessTopLeftFileButtonClick() {
+        dataModel.topLeftFileName = topLeftFileName.getText().trim();
         String fileName = topLeftFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
@@ -101,10 +145,12 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+        saveDataToModel();
     }
 
     @FXML
     protected void onAccessTopMiddleFileButtonClick() {
+        dataModel.topMiddleFileName = topMiddleFileName.getText().trim();
         String fileName = topMiddleFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
@@ -119,6 +165,7 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessTopRightFileButtonClick() {
+        dataModel.topRightFileName = topRightFileName.getText().trim();
         String fileName = topRightFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
@@ -133,6 +180,7 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessMiddleLeftFileButtonClick() {
+        dataModel.middleLeftFileName = middleLeftFileName.getText().trim();
         String fileName = middleLeftFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
@@ -147,6 +195,7 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessMiddleMiddleFileButtonClick() {
+        dataModel.middleMiddleFileName = middleMiddleFileName.getText().trim();
         String fileName = middleMiddleFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
@@ -161,6 +210,7 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessMiddleRightFileButtonClick() {
+        dataModel.middleRightFileName = middleRightFileName.getText().trim();
         String fileName = middleRightFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
@@ -175,6 +225,7 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessBottomLeftFileButtonClick() {
+        dataModel.bottomLeftFileName = bottomLeftFileName.getText().trim();
         String fileName = bottomLeftFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
@@ -189,6 +240,7 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessBottomMiddleFileButtonClick() {
+        dataModel.bottomMiddleFileName = bottomMiddleFileName.getText().trim();
         String fileName = bottomMiddleFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
@@ -203,7 +255,8 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessBottomRightFileButtonClick() {
-        String fileName = bottomMiddleFileName.getText().trim();
+        dataModel.bottomRightFileName = bottomRightFileName.getText().trim();
+        String fileName = bottomRightFileName.getText().trim();
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -218,6 +271,7 @@ public class FilesPageController {
     @FXML
     protected void onHomePageButtonClick() {
 
+        saveDataToModel();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Scene scene = new Scene(loader.load(), 360, 375);
@@ -234,6 +288,7 @@ public class FilesPageController {
     @FXML
     protected void onNotificationPageButtonClick() {
 
+        saveDataToModel();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
             Scene scene = new Scene(loader.load(), 425, 475);
@@ -250,6 +305,7 @@ public class FilesPageController {
     @FXML
     protected void onProfilePageButtonClick() {
 
+        saveDataToModel();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
             Scene scene = new Scene(loader.load(), 425, 475);
@@ -266,6 +322,7 @@ public class FilesPageController {
     @FXML
     protected void onLogInPageButtonClick() {
 
+        saveDataToModel();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
             Scene scene = new Scene(loader.load(), 250, 350);
@@ -282,6 +339,7 @@ public class FilesPageController {
     @FXML
     protected void onSignUpPageButtonClick() {
 
+        saveDataToModel();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
             Scene scene = new Scene(loader.load(), 360, 375);

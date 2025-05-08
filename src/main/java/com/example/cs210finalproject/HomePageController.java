@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.scene.Parent;
 
 public class HomePageController {
 
@@ -58,26 +59,91 @@ public class HomePageController {
     @FXML
     protected void onFile1ButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("File1Page.fxml"));
+            Parent root = loader.load();
+
+            FilesPageController controller = loader.getController();
+            controller.setDataModel(FilePageData.StoredFilesPageData.file1);
+
+            Stage stage = (Stage) file1Button.getScene().getWindow();
+            stage.setScene(new Scene(root, 450, 425));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void onFile2ButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("File2Page.fxml"));
+            Parent root = loader.load();
+
+            FilesPageController controller = loader.getController();
+            controller.setDataModel(FilePageData.StoredFilesPageData.file2);
+
+            Stage stage = (Stage) file2Button.getScene().getWindow();
+            stage.setScene(new Scene(root, 450, 425));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void onFile3ButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("File3Page.fxml"));
+            Parent root = loader.load();
+
+            FilesPageController controller = loader.getController();
+            controller.setDataModel(FilePageData.StoredFilesPageData.file3);
+
+            Stage stage = (Stage) file3Button.getScene().getWindow();
+            stage.setScene(new Scene(root, 450, 425));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void onFile4ButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("File4Page.fxml"));
+            Parent root = loader.load();
+
+            FilesPageController controller = loader.getController();
+            controller.setDataModel(FilePageData.StoredFilesPageData.file4);
+
+            Stage stage = (Stage) file4Button.getScene().getWindow();
+            stage.setScene(new Scene(root, 450, 425));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void onFile5ButtonClick() {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("File5Page.fxml"));
+            Parent root = loader.load();
+
+            FilesPageController controller = loader.getController();
+            controller.setDataModel(FilePageData.StoredFilesPageData.file5);
+
+            Stage stage = (Stage) file5Button.getScene().getWindow();
+            stage.setScene(new Scene(root, 450, 425));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
