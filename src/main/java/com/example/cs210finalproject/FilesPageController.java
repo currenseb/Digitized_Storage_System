@@ -1,12 +1,12 @@
 package com.example.cs210finalproject;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
+import javafx.scene.control.Label;
 import java.io.IOException;
 
 
@@ -16,7 +16,7 @@ public class FilesPageController {
 
         // Text Fields
     @FXML
-    private TextField overallFileName;
+    private Label overallFileName;
 
     @FXML
     private TextField topLeftFileName;
@@ -96,8 +96,10 @@ public class FilesPageController {
         loadDataIntoFields();
     }
 
+    private HomePageData homePageDataModel = HomePageData.StoredHomePageData.homePageData;
+
+
     private void loadDataIntoFields() {
-        if (dataModel == null) return;
 
         overallFileName.setText(dataModel.overallFileName);
         topLeftFileName.setText(dataModel.topLeftFileName);
@@ -110,15 +112,9 @@ public class FilesPageController {
         bottomMiddleFileName.setText(dataModel.bottomMiddleFileName);
         bottomRightFileName.setText(dataModel.bottomRightFileName);
 
-        if (dataModel == null) {
-            System.out.println("loadDataIntoFields: dataModel is null!");
-            return;
-        }
-        topLeftFileName.setText(dataModel.topLeftFileName);
     }
 
     private void saveDataToModel() {
-        if (dataModel == null) return;
 
         dataModel.overallFileName = overallFileName.getText().trim();
         dataModel.topLeftFileName = topLeftFileName.getText().trim();
@@ -270,15 +266,29 @@ public class FilesPageController {
 
     @FXML
     protected void onHomePageButtonClick() {
-
         saveDataToModel();
+
+        if (dataModel == FilePageData.StoredFilesPageData.file1) {
+            homePageDataModel.file1Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file2) {
+            homePageDataModel.file2Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file3) {
+            homePageDataModel.file3Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file4) {
+            homePageDataModel.file4Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file5) {
+            homePageDataModel.file5Name = dataModel.overallFileName;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            Scene scene = new Scene(loader.load(), 360, 375);
+            Parent root = loader.load();
 
-            // Get current stage from the button (or any node)
+            HomePageController controller = loader.getController();
+            controller.setDataModel(homePageDataModel);
+
             Stage stage = (Stage) homePageButton.getScene().getWindow();
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 360, 375));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -287,16 +297,32 @@ public class FilesPageController {
 
     @FXML
     protected void onNotificationPageButtonClick() {
+        saveDataToModel();  // saves into FilePageData
 
-        saveDataToModel();
+        if (dataModel == FilePageData.StoredFilesPageData.file1) {
+            HomePageData.StoredHomePageData.homePageData.file1Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file2) {
+            HomePageData.StoredHomePageData.homePageData.file2Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file3) {
+            HomePageData.StoredHomePageData.homePageData.file3Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file4) {
+            HomePageData.StoredHomePageData.homePageData.file4Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file5) {
+            HomePageData.StoredHomePageData.homePageData.file5Name = dataModel.overallFileName;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
-            Scene scene = new Scene(loader.load(), 425, 475);
+            Parent root = loader.load();
 
-            // Get current stage from the button (or any node)
+            NotificationController controller = loader.getController();
+            controller.setDataModel(HomePageData.StoredHomePageData.homePageData);
+            controller.setNotificationData(NotificationData.storedNotificationData.notificationData);
+
             Stage stage = (Stage) notificationPageButton.getScene().getWindow();
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 425, 475));
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -304,20 +330,37 @@ public class FilesPageController {
 
     @FXML
     protected void onProfilePageButtonClick() {
+        saveDataToModel();  // Save all file text fields into FilePageData
 
-        saveDataToModel();
+        // ✅ Sync file name into HomePageData before changing scene
+        if (dataModel == FilePageData.StoredFilesPageData.file1) {
+            HomePageData.StoredHomePageData.homePageData.file1Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file2) {
+            HomePageData.StoredHomePageData.homePageData.file2Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file3) {
+            HomePageData.StoredHomePageData.homePageData.file3Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file4) {
+            HomePageData.StoredHomePageData.homePageData.file4Name = dataModel.overallFileName;
+        } else if (dataModel == FilePageData.StoredFilesPageData.file5) {
+            HomePageData.StoredHomePageData.homePageData.file5Name = dataModel.overallFileName;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
-            Scene scene = new Scene(loader.load(), 425, 475);
+            Parent root = loader.load();
 
-            // Get current stage from the button (or any node)
+            ProfilePageController controller = loader.getController();
+            controller.setDataModel(HomePageData.StoredHomePageData.homePageData);
+            controller.setNotificationData(NotificationData.storedNotificationData.notificationData); // optional
+
             Stage stage = (Stage) profilePageButton.getScene().getWindow();
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 425, 475));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     protected void onLogInPageButtonClick() {

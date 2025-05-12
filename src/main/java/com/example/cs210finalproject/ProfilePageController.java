@@ -1,6 +1,7 @@
 package com.example.cs210finalproject;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -62,6 +63,19 @@ public class ProfilePageController {
     private Button notificationPageButton;
 
     // Methods
+
+    private HomePageData dataModel = HomePageData.StoredHomePageData.homePageData;
+    private NotificationData notificationData = NotificationData.storedNotificationData.notificationData;
+
+    public void setDataModel(HomePageData model) {
+        this.dataModel = model;
+    }
+
+    public void setNotificationData(NotificationData model) {
+        this.notificationData = model;
+    }
+
+
     @FXML
     protected void onRevealEmailButtonClick() {
 
@@ -94,15 +108,17 @@ public class ProfilePageController {
 
     @FXML
     protected void onHomePageButtonClick() {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            Scene scene = new Scene(loader.load(), 360, 375);
+            Parent root = loader.load();
 
-            // Get current stage from the button (or any node)
+            HomePageController controller = loader.getController();
+            controller.setDataModel(dataModel);  // ✅ reusing the passed-in model
+
             Stage stage = (Stage) homePageButton.getScene().getWindow();
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 360, 375));
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,19 +126,22 @@ public class ProfilePageController {
 
     @FXML
     protected void onNotificationPageButtonClick() {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
-            Scene scene = new Scene(loader.load(), 425, 475);
+            Parent root = loader.load();
 
-            // Get current stage from the button (or any node)
+            NotificationController controller = loader.getController();
+            controller.setDataModel(dataModel);  // ✅ HomePageData
+            controller.setNotificationData(notificationData);  // ✅ NotificationData
+
             Stage stage = (Stage) notificationPageButton.getScene().getWindow();
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 425, 475));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     protected void onLogInPageButtonClick() {

@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs210finalproject.NotificationController">
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" prefHeight="45.0" prefWidth="620.0" text="Your Notifications" textAlignment="CENTER">
@@ -17,13 +16,13 @@
          </font>
       </Label>
       <TextField fx:id="reminder1Text" prefHeight="60.0" prefWidth="600.0" promptText="Enter Reminder 1" />
-      <TextField fx:id="reminder1Date" text="Reminder 1 Set: xx/xx/xxxx" />
+      <TextField fx:id="reminder1Date" promptText="Reminder 1 Set: xx/xx/xxxx" />
       <Button fx:id="reminder1Button" mnemonicParsing="false" onAction="#onReminder1ButtonClick" text="Set Reminder" />
       <TextField fx:id="reminder2Text" prefHeight="60.0" prefWidth="600.0" promptText="Enter Reminder 2" />
-      <TextField fx:id="reminder2Date" text="Reminder 2 Set: xx/xx/xxxx" />
+      <TextField fx:id="reminder2Date" promptText="Reminder 2 Set: xx/xx/xxxx" />
       <Button fx:id="reminder2Button" mnemonicParsing="false" onAction="#onReminder2ButtonClick" text="Set Reminder" />
       <TextField fx:id="reminder3Text" prefHeight="60.0" prefWidth="600.0" promptText="Enter Reminder 3" />
-      <TextField fx:id="reminder3Date" text="Reminder 3 Set: xx/xx/xxx" />
+      <TextField fx:id="reminder3Date" promptText="Reminder 3 Set: xx/xx/xxx" />
       <Button fx:id="reminder3Button" mnemonicParsing="false" onAction="#onReminder3ButtonClick" text="Set Reminder" />
       <Pane prefHeight="22.0" prefWidth="400.0" />
       <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="318.0">
