@@ -8,35 +8,25 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import jdk.incubator.vector.VectorOperators;
-
 import java.io.IOException;
 
 public class ProfilePageController {
 
     // Variables
-    @FXML
-    private TextField userEmail;
+
+    public User currentUser; // Only Public For Internal Unit Testing, otherwise private
 
     @FXML
-    private TextField newUserEmail;
+    public TextField userUsername; // Only Public For Internal Unit Testing, otherwise private
 
     @FXML
-    private TextField userUsername;
+    public TextField newUserUsername; // Only Public For Internal Unit Testing, otherwise private
 
     @FXML
-    private TextField newUserUsername;
+    public TextField userPassword; // Only Public For Internal Unit Testing, otherwise private
 
     @FXML
-    private TextField userPassword;
-
-    @FXML
-    private TextField newUserPassword;
-
-    @FXML
-    private Button revealEmailButton;
-
-    @FXML
-    private Button changeEmailButton;
+    public TextField newUserPassword; // Only Public For Internal Unit Testing, otherwise private
 
     @FXML
     private Button revealUsernameButton;
@@ -64,83 +54,98 @@ public class ProfilePageController {
 
     // Methods
 
-    private HomePageData dataModel = HomePageData.StoredHomePageData.homePageData;
-    private NotificationData notificationData = NotificationData.storedNotificationData.notificationData;
-
-    public void setDataModel(HomePageData model) {
-        this.dataModel = model;
+    // ✅ Set user object
+    public void setUser(User user) {
+        this.currentUser = user;
+        loadDataIntoFields();
     }
 
-    public void setNotificationData(NotificationData model) {
-        this.notificationData = model;
-    }
-
-
-    @FXML
-    protected void onRevealEmailButtonClick() {
-
-    }
-
-    @FXML
-    protected void onChangeEmailButtonClick() {
-
+    private void loadDataIntoFields() {
+        userUsername.setText("••••••••");
+        userPassword.setText("••••••••");
     }
 
     @FXML
     protected void onRevealUsernameButtonClick() {
-
+        userUsername.setText(currentUser.profilePageData.username);
     }
 
     @FXML
-    protected void onChangeUsernameButtonClick() {
+    public void onChangeUsernameButtonClick() { // Only Public For Internal Unit Testing, otherwise private
+        String newUsername = newUserUsername.getText().trim();
+        if (!newUsername.isEmpty()) {
+            String oldUsername = currentUser.username;
 
+            // Update user fields
+            currentUser.profilePageData.username = newUsername;
+            currentUser.username = newUsername;
+
+            // Update the userDatabase key
+            User user = User.userDatabase.remove(oldUsername);  // remove old hashmap key
+            User.userDatabase.put(newUsername, user);           // add new hashmap key
+
+            // Update UI
+            userUsername.setText("••••••••");
+            newUserUsername.clear();
+        }
     }
+
 
     @FXML
     protected void onRevealPasswordButtonClick() {
-
+        userPassword.setText(currentUser.profilePageData.password);
     }
 
     @FXML
-    protected void onChangePasswordButtonClick() {
+    public void onChangePasswordButtonClick() { // Only Public For Internal Unit Testing, otherwise private
+        String newPassword = newUserPassword.getText().trim();
+        if (!newPassword.isEmpty()) {
+            currentUser.profilePageData.password = newPassword;
+            currentUser.password = newPassword;
 
+            userPassword.setText("••••••••");
+            newUserPassword.clear();
+        }
     }
+
 
     @FXML
     protected void onHomePageButtonClick() {
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Parent root = loader.load();
 
             HomePageController controller = loader.getController();
-            controller.setDataModel(dataModel);  // ✅ reusing the passed-in model
+            controller.setUser(currentUser);
 
             Stage stage = (Stage) homePageButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 360, 375));
+            stage.setScene(new Scene(root, 360, 375)); // Adjust if needed
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
     @FXML
     protected void onNotificationPageButtonClick() {
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
             Parent root = loader.load();
 
             NotificationController controller = loader.getController();
-            controller.setDataModel(dataModel);  // ✅ HomePageData
-            controller.setNotificationData(notificationData);  // ✅ NotificationData
+            controller.setUser(currentUser);
 
             Stage stage = (Stage) notificationPageButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 425, 475));
+            stage.setScene(new Scene(root, 350, 450));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 
     @FXML
@@ -150,7 +155,6 @@ public class ProfilePageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
             Scene scene = new Scene(loader.load(), 250, 350);
 
-            // Get current stage from the button (or any node)
             Stage stage = (Stage) logInPageButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -159,6 +163,7 @@ public class ProfilePageController {
         }
     }
 
+
     @FXML
     protected void onSignUpPageButtonClick() {
 
@@ -166,7 +171,6 @@ public class ProfilePageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
             Scene scene = new Scene(loader.load(), 360, 375);
 
-            // Get current stage from the button (or any node)
             Stage stage = (Stage) signUpPageButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -174,4 +178,26 @@ public class ProfilePageController {
             e.printStackTrace();
         }
     }
+
+    // Only used for unit testing — bypasses JavaFX fields
+    public void changeUsernameForTest(String newUsername) {
+        if (!newUsername.isEmpty()) {
+            String oldUsername = currentUser.username;
+            currentUser.profilePageData.username = newUsername;
+            currentUser.username = newUsername;
+
+            User updated = User.userDatabase.remove(oldUsername);
+            User.userDatabase.put(newUsername, updated);
+        }
+    }
+
+    // Only used for unit testing — bypasses JavaFX fields
+    public void changePasswordForTest(String newPassword) {
+        if (!newPassword.isEmpty()) {
+            currentUser.profilePageData.password = newPassword;
+            currentUser.password = newPassword;
+        }
+    }
+
+
 }

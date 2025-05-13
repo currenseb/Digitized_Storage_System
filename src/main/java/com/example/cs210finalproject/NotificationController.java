@@ -13,6 +13,10 @@ import java.io.IOException;
 public class NotificationController {
 
     // Variables
+
+    private User currentUser;
+    private NotificationData dataModel;
+
     @FXML
     private TextField reminder1Text;
 
@@ -53,168 +57,173 @@ public class NotificationController {
     private Button signUpPageButton;
 
     // Methods
-// Data Models
-    private HomePageData homePageData = HomePageData.StoredHomePageData.homePageData;
-    private NotificationData notificationData = NotificationData.storedNotificationData.notificationData;
 
-    public void setDataModel(HomePageData model) {
-        this.homePageData = model;
-    }
-
-    public void setNotificationData(NotificationData model) {
-        this.notificationData = model;
-        loadDataIntoFields(); // if you want to load notifications into the fields right away
+    public void setUser(User user) {
+        this.currentUser = user;
+        this.dataModel = user.notificationData;
+        loadDataIntoFields();
     }
 
     private void loadDataIntoFields() {
-        reminder1Text.setText(notificationData.reminder1Text);
-        reminder2Text.setText(notificationData.reminder2Text);
-        reminder3Text.setText(notificationData.reminder3Text);
-        reminder1Date.setText(notificationData.reminder1Date);
-        reminder2Date.setText(notificationData.reminder2Date);
-        reminder3Date.setText(notificationData.reminder3Date);
+        reminder1Text.setText(dataModel.reminder1Text);
+        reminder1Date.setText(dataModel.reminder1Date);
+        reminder2Text.setText(dataModel.reminder2Text);
+        reminder2Date.setText(dataModel.reminder2Date);
+        reminder3Text.setText(dataModel.reminder3Text);
+        reminder3Date.setText(dataModel.reminder3Date);
     }
 
-    private void saveDataToModel() {
+    private void saveDataIntoModel() {
         if (reminder1Text != null && reminder1Text.getText() != null)
-            notificationData.reminder1Text = reminder1Text.getText().trim();
+            dataModel.reminder1Text = reminder1Text.getText().trim();
         else
-            notificationData.reminder1Text = "";
+            dataModel.reminder1Text = "";
 
         if (reminder2Text != null && reminder2Text.getText() != null)
-            notificationData.reminder2Text = reminder2Text.getText().trim();
+            dataModel.reminder2Text = reminder2Text.getText().trim();
         else
-            notificationData.reminder2Text = "";
+            dataModel.reminder2Text = "";
 
         if (reminder3Text != null && reminder3Text.getText() != null)
-            notificationData.reminder3Text = reminder3Text.getText().trim();
+            dataModel.reminder3Text = reminder3Text.getText().trim();
         else
-            notificationData.reminder3Text = "";
+            dataModel.reminder3Text = "";
 
         if (reminder1Date != null && reminder1Date.getText() != null)
-            notificationData.reminder1Date = "Reminder 1 Set: " + reminder1Date.getText().trim();
+            dataModel.reminder1Date = reminder1Date.getText().trim();
         else
-            notificationData.reminder1Date = "";
+            dataModel.reminder1Date = "";
 
         if (reminder2Date != null && reminder2Date.getText() != null)
-            notificationData.reminder2Date = "Reminder 2 Set: " + reminder2Date.getText().trim();
+            dataModel.reminder2Date = reminder2Date.getText().trim();
         else
-            notificationData.reminder2Date = "";
+            dataModel.reminder2Date = "";
 
         if (reminder3Date != null && reminder3Date.getText() != null)
-            notificationData.reminder3Date = "Reminder 3 Set: " + reminder3Date.getText().trim();
+            dataModel.reminder3Date = reminder3Date.getText().trim();
         else
-            notificationData.reminder3Date = "";
+            dataModel.reminder3Date = "";
     }
+
 
 
     @FXML
     protected void onReminder1ButtonClick() {
+        // ✅ Safely save the reminder text and date into the user’s model
+        if (reminder1Text != null && reminder1Text.getText() != null)
+            dataModel.reminder1Text = reminder1Text.getText().trim();
+        else
+            dataModel.reminder1Text = "";
 
-        // Creation Of Notification Object
-        String text = reminder1Text.getText();
-        String date = reminder1Date.getText();
-        UserFile reminder1File = new UserFile("reminder1");String file1Path = reminder1File.createFilePath();
-        Notification notification1 = new Notification(text, date, file1Path);
-        // still waiting to add userName functionality within reminder1File parameters
-
-        saveDataToModel();
-
+        if (reminder1Date != null && reminder1Date.getText() != null)
+            dataModel.reminder1Date = reminder1Date.getText().trim();
+        else
+            dataModel.reminder1Date = "";
     }
+
+
 
     @FXML
     protected void onReminder2ButtonClick() {
+        // ✅ Safely save the reminder text and date into the user’s model
+        if (reminder2Text != null && reminder2Text.getText() != null)
+            dataModel.reminder2Text = reminder2Text.getText().trim();
+        else
+            dataModel.reminder2Text = "";
 
-        // Creation Of Notification Object
-        String text = reminder2Text.getText();
-        String date = reminder2Date.getText();
-        UserFile reminder2File = new UserFile("reminder2");String file1Path = reminder2File.createFilePath();
-        Notification notification2 = new Notification(text, date, file1Path);
-        // still waiting to add userName functionality within reminder1File parameters
-
-        saveDataToModel();
-
+        if (reminder2Date != null && reminder2Date.getText() != null)
+            dataModel.reminder2Date = reminder2Date.getText().trim();
+        else
+            dataModel.reminder2Date = "";
     }
+
 
     @FXML
     protected void onReminder3ButtonClick() {
+        // ✅ Safely save the reminder text and date into the user’s model
+        if (reminder3Text != null && reminder3Text.getText() != null)
+            dataModel.reminder3Text = reminder3Text.getText().trim();
+        else
+            dataModel.reminder3Text = "";
 
-        // Creation Of Notification Object
-        String text = reminder3Text.getText();
-        String date = reminder3Date.getText();
-        UserFile reminder3File = new UserFile("reminder3");String file3Path = reminder3File.createFilePath();
-        Notification notification3 = new Notification(text, date, file3Path);
-        // still waiting to add userName functionality within reminder1File parameters
-
-        saveDataToModel();
-
+        if (reminder3Date != null && reminder3Date.getText() != null)
+            dataModel.reminder3Date = reminder3Date.getText().trim();
+        else
+            dataModel.reminder3Date = "";
     }
+
 
     @FXML
     protected void onHomePageButtonClick() {
+        saveDataIntoModel();
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Parent root = loader.load();
 
             HomePageController controller = loader.getController();
-            controller.setDataModel(homePageData);
+            controller.setUser(currentUser);
 
             Stage stage = (Stage) homePageButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 360, 375));
+            stage.setScene(new Scene(root, 360, 375)); // Adjust if needed
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     protected void onProfilePageButtonClick() {
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
-            Scene scene = new Scene(loader.load(), 425, 475);
+            Parent root = loader.load();
 
-            // Get current stage from the button (or any node)
+            ProfilePageController controller = loader.getController();
+            controller.setUser(currentUser);
+
             Stage stage = (Stage) profilePageButton.getScene().getWindow();
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 425, 475));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
     @FXML
     protected void onLogInPageButtonClick() {
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
             Scene scene = new Scene(loader.load(), 250, 350);
 
-            // Get current stage from the button (or any node)
             Stage stage = (Stage) logInPageButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
 
     @FXML
     protected void onSignUpPageButtonClick() {
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
             Scene scene = new Scene(loader.load(), 360, 375);
 
-            // Get current stage from the button (or any node)
             Stage stage = (Stage) signUpPageButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
 }

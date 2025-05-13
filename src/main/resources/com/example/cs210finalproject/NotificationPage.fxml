@@ -16,12 +16,15 @@
          </font>
       </Label>
       <TextField fx:id="reminder1Text" prefHeight="60.0" prefWidth="600.0" promptText="Enter Reminder 1" />
+      <Label text="Reminder Set Date" />
       <TextField fx:id="reminder1Date" promptText="Reminder 1 Set: xx/xx/xxxx" />
       <Button fx:id="reminder1Button" mnemonicParsing="false" onAction="#onReminder1ButtonClick" text="Set Reminder" />
       <TextField fx:id="reminder2Text" prefHeight="60.0" prefWidth="600.0" promptText="Enter Reminder 2" />
+      <Label text="Reminder Set Date" />
       <TextField fx:id="reminder2Date" promptText="Reminder 2 Set: xx/xx/xxxx" />
       <Button fx:id="reminder2Button" mnemonicParsing="false" onAction="#onReminder2ButtonClick" text="Set Reminder" />
       <TextField fx:id="reminder3Text" prefHeight="60.0" prefWidth="600.0" promptText="Enter Reminder 3" />
+      <Label text="Reminder Set Date" />
       <TextField fx:id="reminder3Date" promptText="Reminder 3 Set: xx/xx/xxx" />
       <Button fx:id="reminder3Button" mnemonicParsing="false" onAction="#onReminder3ButtonClick" text="Set Reminder" />
       <Pane prefHeight="22.0" prefWidth="400.0" />

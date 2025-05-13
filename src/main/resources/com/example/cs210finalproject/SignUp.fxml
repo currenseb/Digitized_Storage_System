@@ -20,12 +20,6 @@
          </font>
       </Label>
       <TextField fx:id="usernameSignUp" prefHeight="25.0" prefWidth="136.0" />
-      <Label text="Enter Email">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="emailSignUp" />
       <Label text="Create Password">
          <font>
             <Font size="18.0" />
@@ -33,7 +27,7 @@
       </Label>
       <TextField fx:id="passwordSignUp" />
       <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#onSignUpButtonClick" text="Click To Sign Up" />
-      <Label contentDisplay="TOP" prefHeight="46.0" prefWidth="250.0" text="Password Must Contain 2 Or More of &quot;!,@,#,$,%,^,&amp;,*,&quot;" textAlignment="CENTER" />
-      <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Already Have An Account? Click To SignIn" />
+      <Label contentDisplay="TOP" prefHeight="63.0" prefWidth="250.0" text="Password Must Contain 2 Or More of &quot;!,@,#,$,%,^,&amp;,*,&quot; and Contain 10 or More Characters" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Already Have An Account? Click To Sign In" />
    </children>
 </VBox>

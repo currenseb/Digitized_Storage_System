@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 public class HomePageController {
 
     // Variables
+
+    private User currentUser;
     @FXML
     private TextField file1Name;
 
@@ -55,54 +57,59 @@ public class HomePageController {
 
     // Methods
 
-    private HomePageData dataModel = HomePageData.StoredHomePageData.homePageData;
-
-    public void setDataModel(HomePageData model) {
-        System.out.println("✅ HomePage setDataModel called");
-        System.out.println("file1Name = " + model.file1Name);
-        this.dataModel = model;
+    public void setUser(User user) {
+        this.currentUser = user;
         loadDataIntoFields();
     }
 
     public void loadDataIntoFields() {
+        // ✅ Sync latest names from file data into home page data
+        currentUser.homePageData.file1Name = currentUser.file1Data.overallFileName;
+        currentUser.homePageData.file2Name = currentUser.file2Data.overallFileName;
+        currentUser.homePageData.file3Name = currentUser.file3Data.overallFileName;
+        currentUser.homePageData.file4Name = currentUser.file4Data.overallFileName;
+        currentUser.homePageData.file5Name = currentUser.file5Data.overallFileName;
 
-        file1Name.setText(dataModel.file1Name);
-        file2Name.setText(dataModel.file2Name);
-        file3Name.setText(dataModel.file3Name);
-        file4Name.setText(dataModel.file4Name);
-        file5Name.setText(dataModel.file5Name);
+        // ✅ Now load the synced data into the text fields
+        file1Name.setText(currentUser.homePageData.file1Name);
+        file2Name.setText(currentUser.homePageData.file2Name);
+        file3Name.setText(currentUser.homePageData.file3Name);
+        file4Name.setText(currentUser.homePageData.file4Name);
+        file5Name.setText(currentUser.homePageData.file5Name);
     }
+
 
     public void saveDataIntoModel() {
         if (file1Name != null && file1Name.getText() != null)
-            dataModel.file1Name = file1Name.getText().trim();
+            currentUser.homePageData.file1Name = file1Name.getText().trim();
         if (file2Name != null && file2Name.getText() != null)
-            dataModel.file2Name = file2Name.getText().trim();
+            currentUser.homePageData.file2Name = file2Name.getText().trim();
         if (file3Name != null && file3Name.getText() != null)
-            dataModel.file3Name = file3Name.getText().trim();
+            currentUser.homePageData.file3Name = file3Name.getText().trim();
         if (file4Name != null && file4Name.getText() != null)
-            dataModel.file4Name = file4Name.getText().trim();
+            currentUser.homePageData.file4Name = file4Name.getText().trim();
         if (file5Name != null && file5Name.getText() != null)
-            dataModel.file5Name = file5Name.getText().trim();
+            currentUser.homePageData.file5Name = file5Name.getText().trim();
     }
+
 
 
 
     @FXML
     protected void onFile1ButtonClick() {
-        String name = file1Name.getText().trim();
-        FilePageData file1Data = FilePageData.StoredFilesPageData.file1;
-
-        // 🔄 Save text from HomePage text field into file1 data
-        file1Data.overallFileName = name;
+        // ✅ Step 1: Save current file1 text into user data
+        currentUser.file1Data.overallFileName = file1Name.getText().trim();
 
         try {
+            // ✅ Step 2: Load FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("File1Page.fxml"));
             Parent root = loader.load();
 
+            // ✅ Step 3: Pass the current user and file1 data into the controller
             FilesPageController controller = loader.getController();
-            controller.setDataModel(file1Data);  // Send it to file page
+            controller.setUser(currentUser, currentUser.file1Data); // <-- NEW
 
+            // ✅ Step 4: Transition scene
             Stage stage = (Stage) file1Button.getScene().getWindow();
             stage.setScene(new Scene(root, 450, 425));
             stage.show();
@@ -114,23 +121,26 @@ public class HomePageController {
 
 
 
+
     @FXML
     protected void onFile2ButtonClick() {
-        String name = file2Name.getText().trim();
-        FilePageData file2Data = FilePageData.StoredFilesPageData.file2;
-
-        file2Data.overallFileName = name;
+        // ✅ Step 1: Save current file1 text into user data
+        currentUser.file2Data.overallFileName = file2Name.getText().trim();
 
         try {
+            // ✅ Step 2: Load FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("File2Page.fxml"));
             Parent root = loader.load();
 
+            // ✅ Step 3: Pass the current user and file1 data into the controller
             FilesPageController controller = loader.getController();
-            controller.setDataModel(file2Data);
+            controller.setUser(currentUser, currentUser.file2Data); // <-- NEW
 
+            // ✅ Step 4: Transition scene
             Stage stage = (Stage) file2Button.getScene().getWindow();
             stage.setScene(new Scene(root, 450, 425));
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -139,21 +149,23 @@ public class HomePageController {
 
     @FXML
     protected void onFile3ButtonClick() {
-        String name = file3Name.getText().trim();
-        FilePageData file3Data = FilePageData.StoredFilesPageData.file3;
-
-        file3Data.overallFileName = name;
+        // ✅ Step 1: Save current file1 text into user data
+        currentUser.file3Data.overallFileName = file3Name.getText().trim();
 
         try {
+            // ✅ Step 2: Load FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("File3Page.fxml"));
             Parent root = loader.load();
 
+            // ✅ Step 3: Pass the current user and file1 data into the controller
             FilesPageController controller = loader.getController();
-            controller.setDataModel(file3Data);
+            controller.setUser(currentUser, currentUser.file3Data); // <-- NEW
 
+            // ✅ Step 4: Transition scene
             Stage stage = (Stage) file3Button.getScene().getWindow();
             stage.setScene(new Scene(root, 450, 425));
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -162,21 +174,23 @@ public class HomePageController {
 
     @FXML
     protected void onFile4ButtonClick() {
-        String name = file4Name.getText().trim();
-        FilePageData file4Data = FilePageData.StoredFilesPageData.file4;
-
-        file4Data.overallFileName = name;
+        // ✅ Step 1: Save current file1 text into user data
+        currentUser.file4Data.overallFileName = file4Name.getText().trim();
 
         try {
+            // ✅ Step 2: Load FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("File4Page.fxml"));
             Parent root = loader.load();
 
+            // ✅ Step 3: Pass the current user and file1 data into the controller
             FilesPageController controller = loader.getController();
-            controller.setDataModel(file4Data);
+            controller.setUser(currentUser, currentUser.file4Data); // <-- NEW
 
+            // ✅ Step 4: Transition scene
             Stage stage = (Stage) file4Button.getScene().getWindow();
             stage.setScene(new Scene(root, 450, 425));
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -185,21 +199,23 @@ public class HomePageController {
 
     @FXML
     protected void onFile5ButtonClick() {
-        String name = file5Name.getText().trim();
-        FilePageData file5Data = FilePageData.StoredFilesPageData.file5;
-
-        file5Data.overallFileName = name;
+        // ✅ Step 1: Save current file1 text into user data
+        currentUser.file5Data.overallFileName = file5Name.getText().trim();
 
         try {
+            // ✅ Step 2: Load FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("File5Page.fxml"));
             Parent root = loader.load();
 
+            // ✅ Step 3: Pass the current user and file1 data into the controller
             FilesPageController controller = loader.getController();
-            controller.setDataModel(file5Data);
+            controller.setUser(currentUser, currentUser.file5Data); // <-- NEW
 
+            // ✅ Step 4: Transition scene
             Stage stage = (Stage) file5Button.getScene().getWindow();
             stage.setScene(new Scene(root, 450, 425));
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -208,41 +224,39 @@ public class HomePageController {
 
     @FXML
     protected void onProfilePageButtonClick() {
+        saveDataIntoModel(); // ✅ Save current form into user model before leaving
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
             Parent root = loader.load();
 
             ProfilePageController controller = loader.getController();
-            controller.setDataModel(dataModel);  // ✅ pass current HomePageData
+            controller.setUser(currentUser); // ✅ Pass the current user
 
             Stage stage = (Stage) profilePageButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 425, 475));
+            stage.setScene(new Scene(root, 425, 475)); // Adjust size as needed
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
+
 
     @FXML
     protected void onNotificationPageButtonClick() {
-        saveDataIntoModel();  // ✅ Save before switching scenes
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
             Parent root = loader.load();
 
             NotificationController controller = loader.getController();
-
-            // ✅ Set both data models
-            controller.setDataModel(HomePageData.StoredHomePageData.homePageData);
-            controller.setNotificationData(NotificationData.storedNotificationData.notificationData);
+            controller.setUser(currentUser);
 
             Stage stage = (Stage) notificationPageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 350, 450));
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -250,37 +264,38 @@ public class HomePageController {
 
 
 
+
     @FXML
     protected void onLogInPageButtonClick() {
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
             Scene scene = new Scene(loader.load(), 250, 350);
 
-            // Get current stage from the button (or any node)
             Stage stage = (Stage) logInPageButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onSignUpPageButtonClick() {
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
             Scene scene = new Scene(loader.load(), 360, 375);
 
-            // Get current stage from the button (or any node)
             Stage stage = (Stage) signUpPageButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        saveDataIntoModel();
     }
+
 }

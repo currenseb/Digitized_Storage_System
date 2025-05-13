@@ -8,10 +8,4 @@ public class HomePageData {
     public String file3Name;
     public String file4Name;
     public String file5Name;
-
-    // Static Method
-    public static class StoredHomePageData {
-        public static HomePageData homePageData = new HomePageData();
-    }
-
 }

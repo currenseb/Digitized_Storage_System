@@ -12,18 +12,9 @@
    <children>
       <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="420.0" text="Your Profile">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label text="Email Information">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="userEmail" />
-      <Button fx:id="revealEmailButton" mnemonicParsing="false" onAction="#onRevealEmailButtonClick" text="Reveal Email" />
-      <TextField fx:id="newUserEmail" promptText="Enter New Email" />
-      <Button fx:id="changeEmailButton" mnemonicParsing="false" onAction="#onChangeEmailButtonClick" text="Change Email" />
       <Label text="Username Information">
          <font>
             <Font size="14.0" />

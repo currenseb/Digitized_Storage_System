@@ -14,6 +14,9 @@ public class FilesPageController {
 
     // Variables
 
+    private User currentUser;
+    private FilePageData dataModel;
+
         // Text Fields
     @FXML
     private Label overallFileName;
@@ -89,18 +92,14 @@ public class FilesPageController {
     private Button signUpPageButton;
 
     // Methods
-    private FilePageData dataModel;
 
-    public void setDataModel(FilePageData model) {
-        this.dataModel = model;
+    public void setUser(User user, FilePageData fileData) {
+        this.currentUser = user;
+        this.dataModel = fileData;
         loadDataIntoFields();
     }
 
-    private HomePageData homePageDataModel = HomePageData.StoredHomePageData.homePageData;
-
-
     private void loadDataIntoFields() {
-
         overallFileName.setText(dataModel.overallFileName);
         topLeftFileName.setText(dataModel.topLeftFileName);
         topMiddleFileName.setText(dataModel.topMiddleFileName);
@@ -111,11 +110,9 @@ public class FilesPageController {
         bottomLeftFileName.setText(dataModel.bottomLeftFileName);
         bottomMiddleFileName.setText(dataModel.bottomMiddleFileName);
         bottomRightFileName.setText(dataModel.bottomRightFileName);
-
     }
 
-    private void saveDataToModel() {
-
+    private void saveDataIntoModel() {
         dataModel.overallFileName = overallFileName.getText().trim();
         dataModel.topLeftFileName = topLeftFileName.getText().trim();
         dataModel.topMiddleFileName = topMiddleFileName.getText().trim();
@@ -130,8 +127,9 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessTopLeftFileButtonClick() {
-        dataModel.topLeftFileName = topLeftFileName.getText().trim();
         String fileName = topLeftFileName.getText().trim();
+        dataModel.topLeftFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -141,13 +139,16 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
-        saveDataToModel();
+
+        saveDataIntoModel(); // ✅ Save current state
     }
+
 
     @FXML
     protected void onAccessTopMiddleFileButtonClick() {
-        dataModel.topMiddleFileName = topMiddleFileName.getText().trim();
         String fileName = topMiddleFileName.getText().trim();
+        dataModel.topMiddleFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -157,12 +158,16 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+
+        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onAccessTopRightFileButtonClick() {
-        dataModel.topRightFileName = topRightFileName.getText().trim();
         String fileName = topRightFileName.getText().trim();
+        dataModel.topRightFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -172,12 +177,16 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+
+        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onAccessMiddleLeftFileButtonClick() {
-        dataModel.middleLeftFileName = middleLeftFileName.getText().trim();
         String fileName = middleLeftFileName.getText().trim();
+        dataModel.middleLeftFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -187,12 +196,16 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+
+        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onAccessMiddleMiddleFileButtonClick() {
-        dataModel.middleMiddleFileName = middleMiddleFileName.getText().trim();
         String fileName = middleMiddleFileName.getText().trim();
+        dataModel.middleMiddleFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -202,12 +215,16 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+
+        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onAccessMiddleRightFileButtonClick() {
-        dataModel.middleRightFileName = middleRightFileName.getText().trim();
         String fileName = middleRightFileName.getText().trim();
+        dataModel.middleRightFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -217,12 +234,16 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+
+        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onAccessBottomLeftFileButtonClick() {
-        dataModel.bottomLeftFileName = bottomLeftFileName.getText().trim();
         String fileName = bottomLeftFileName.getText().trim();
+        dataModel.bottomLeftFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -232,12 +253,16 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+
+        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onAccessBottomMiddleFileButtonClick() {
-        dataModel.bottomMiddleFileName = bottomMiddleFileName.getText().trim();
         String fileName = bottomMiddleFileName.getText().trim();
+        dataModel.bottomMiddleFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -247,12 +272,16 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+
+        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onAccessBottomRightFileButtonClick() {
-        dataModel.bottomRightFileName = bottomRightFileName.getText().trim();
         String fileName = bottomRightFileName.getText().trim();
+        dataModel.bottomRightFileName = fileName;
+
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName);
             try {
@@ -262,96 +291,61 @@ public class FilesPageController {
                 e.printStackTrace();
             }
         }
+
+        saveDataIntoModel();
     }
+
 
     @FXML
     protected void onHomePageButtonClick() {
-        saveDataToModel();
-
-        if (dataModel == FilePageData.StoredFilesPageData.file1) {
-            homePageDataModel.file1Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file2) {
-            homePageDataModel.file2Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file3) {
-            homePageDataModel.file3Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file4) {
-            homePageDataModel.file4Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file5) {
-            homePageDataModel.file5Name = dataModel.overallFileName;
-        }
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Parent root = loader.load();
 
             HomePageController controller = loader.getController();
-            controller.setDataModel(homePageDataModel);
+            controller.setUser(currentUser);
 
             Stage stage = (Stage) homePageButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 360, 375));
+            stage.setScene(new Scene(root, 360, 375)); // Adjust if needed
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
     @FXML
     protected void onNotificationPageButtonClick() {
-        saveDataToModel();  // saves into FilePageData
-
-        if (dataModel == FilePageData.StoredFilesPageData.file1) {
-            HomePageData.StoredHomePageData.homePageData.file1Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file2) {
-            HomePageData.StoredHomePageData.homePageData.file2Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file3) {
-            HomePageData.StoredHomePageData.homePageData.file3Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file4) {
-            HomePageData.StoredHomePageData.homePageData.file4Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file5) {
-            HomePageData.StoredHomePageData.homePageData.file5Name = dataModel.overallFileName;
-        }
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
             Parent root = loader.load();
 
             NotificationController controller = loader.getController();
-            controller.setDataModel(HomePageData.StoredHomePageData.homePageData);
-            controller.setNotificationData(NotificationData.storedNotificationData.notificationData);
+            controller.setUser(currentUser);
 
             Stage stage = (Stage) notificationPageButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 425, 475));
+            stage.setScene(new Scene(root, 350, 450));
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
     @FXML
     protected void onProfilePageButtonClick() {
-        saveDataToModel();  // Save all file text fields into FilePageData
-
-        // ✅ Sync file name into HomePageData before changing scene
-        if (dataModel == FilePageData.StoredFilesPageData.file1) {
-            HomePageData.StoredHomePageData.homePageData.file1Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file2) {
-            HomePageData.StoredHomePageData.homePageData.file2Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file3) {
-            HomePageData.StoredHomePageData.homePageData.file3Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file4) {
-            HomePageData.StoredHomePageData.homePageData.file4Name = dataModel.overallFileName;
-        } else if (dataModel == FilePageData.StoredFilesPageData.file5) {
-            HomePageData.StoredHomePageData.homePageData.file5Name = dataModel.overallFileName;
-        }
+        saveDataIntoModel();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
             Parent root = loader.load();
 
             ProfilePageController controller = loader.getController();
-            controller.setDataModel(HomePageData.StoredHomePageData.homePageData);
-            controller.setNotificationData(NotificationData.storedNotificationData.notificationData); // optional
+            controller.setUser(currentUser);
 
             Stage stage = (Stage) profilePageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 425, 475));
@@ -361,16 +355,14 @@ public class FilesPageController {
         }
     }
 
-
     @FXML
     protected void onLogInPageButtonClick() {
+        saveDataIntoModel();
 
-        saveDataToModel();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
             Scene scene = new Scene(loader.load(), 250, 350);
 
-            // Get current stage from the button (or any node)
             Stage stage = (Stage) logInPageButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -381,13 +373,12 @@ public class FilesPageController {
 
     @FXML
     protected void onSignUpPageButtonClick() {
+        saveDataIntoModel();
 
-        saveDataToModel();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
             Scene scene = new Scene(loader.load(), 360, 375);
 
-            // Get current stage from the button (or any node)
             Stage stage = (Stage) signUpPageButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -395,4 +386,5 @@ public class FilesPageController {
             e.printStackTrace();
         }
     }
+
 }
