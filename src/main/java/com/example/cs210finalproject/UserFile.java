@@ -9,21 +9,23 @@ public class UserFile {
     private String filePath;
     private String ownerUsername;
 
-    public UserFile(String fileName, String ownerUsername) {
+    public UserFile(String fileName, User user) {
         this.fileName = fileName;
-        this.ownerUsername = ownerUsername;
+        this.ownerUsername = user.getUsername(); // Uses getter from User
         this.filePath = "MainRoot/" + ownerUsername + "/" + fileName + ".txt";
     }
 
-    public UserFile(String fileName) {
-        this.fileName = fileName;
-        this.ownerUsername = "temporary_username";
-        this.filePath = "MainRoot/" + ownerUsername + "/" + fileName + ".txt";
+    public String getFileName() {
+        return fileName;
     }
 
-    public String getFileName() { return fileName; }
-    public String getFilePath() { return filePath; }
-    public String getOwnerUsername() { return ownerUsername; }
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public String getOwnerUsername() {
+        return ownerUsername;
+    }
 
     public void openWithDefaultApp() throws IOException {
         File file = new File(filePath); // <-- Use full path

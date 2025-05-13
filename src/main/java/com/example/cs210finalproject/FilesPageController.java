@@ -131,7 +131,7 @@ public class FilesPageController {
         dataModel.topLeftFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -150,7 +150,7 @@ public class FilesPageController {
         dataModel.topMiddleFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -169,7 +169,7 @@ public class FilesPageController {
         dataModel.topRightFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -188,7 +188,7 @@ public class FilesPageController {
         dataModel.middleLeftFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -207,7 +207,7 @@ public class FilesPageController {
         dataModel.middleMiddleFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -226,7 +226,7 @@ public class FilesPageController {
         dataModel.middleRightFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -245,7 +245,7 @@ public class FilesPageController {
         dataModel.bottomLeftFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -264,7 +264,7 @@ public class FilesPageController {
         dataModel.bottomMiddleFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -283,7 +283,7 @@ public class FilesPageController {
         dataModel.bottomRightFileName = fileName;
 
         if (!fileName.isEmpty()) {
-            UserFile file = new UserFile(fileName);
+            UserFile file = new UserFile(fileName, currentUser);
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {

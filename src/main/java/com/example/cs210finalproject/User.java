@@ -33,6 +33,11 @@ public class User {
         this.file5Data = new FilePageData();
     }
 
+
+    public String getUsername() {
+        return this.username;
+    }
+
     // Static user database
     public static HashMap<String, User> userDatabase = new HashMap<>();
 

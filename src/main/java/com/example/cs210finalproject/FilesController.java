@@ -12,7 +12,7 @@ public class FilesController {
         this.fileList = new ArrayList<>();
     }
 
-    public void openOrCreateFile(String fileName, String ownerUsername) {
+    public void openOrCreateFile(String fileName, User user) {
         for (UserFile file : fileList) {
             if (file.getFileName().equals(fileName)) {
                 try {
@@ -25,7 +25,7 @@ public class FilesController {
             }
         }
 
-        UserFile newFile = new UserFile(fileName, ownerUsername);
+        UserFile newFile = new UserFile(fileName, user);
         fileList.add(newFile);
         try {
             newFile.openWithDefaultApp();

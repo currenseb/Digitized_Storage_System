@@ -191,7 +191,7 @@ public class ProfilePageController {
         }
     }
 
-    // Only used for unit testing — bypasses JavaFX fields
+    // Only used for unit testing — bypasses JavaFX fieldsFop
     public void changePasswordForTest(String newPassword) {
         if (!newPassword.isEmpty()) {
             currentUser.profilePageData.password = newPassword;
