@@ -2,9 +2,8 @@ import com.example.cs210finalproject.ProfilePageController;
 import com.example.cs210finalproject.User;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import javafx.scene.control.TextField;
 
-public class currenTest {
+public class ProfilePageTests {
 
     @Test
     void changeUserNameTest() {
