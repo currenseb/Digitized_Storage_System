@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs210finalproject.HomePageController">
    <children>
       <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="377.0" text="Home Page">
@@ -32,7 +31,7 @@
       <TextField fx:id="file5Name" promptText="File 5: (Enter Name)" />
       <Button fx:id="file5Button" mnemonicParsing="false" onAction="#onFile5ButtonClick" text="Open File 5" />
       <Pane prefHeight="71.0" prefWidth="360.0" />
-      <HBox prefHeight="100.0" prefWidth="360.0">
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0">
          <children>
             <Button fx:id="profilePageButton" mnemonicParsing="false" onAction="#onProfilePageButtonClick" text="Profile Page" />
             <Button fx:id="notificationPageButton" mnemonicParsing="false" onAction="#onNotificationPageButtonClick" text="Notification Page" />

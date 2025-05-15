@@ -288,7 +288,7 @@ public class HomePageController {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
-            Scene scene = new Scene(loader.load(), 360, 375);
+            Scene scene = new Scene(loader.load(), 250, 350);
 
             Stage stage = (Stage) signUpPageButton.getScene().getWindow();
             stage.setScene(scene);

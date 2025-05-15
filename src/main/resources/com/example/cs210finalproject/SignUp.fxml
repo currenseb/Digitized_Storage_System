@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -25,7 +26,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="passwordSignUp" />
+      <PasswordField fx:id="passwordSignUp" prefHeight="25.0" prefWidth="260.0" />
       <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#onSignUpButtonClick" text="Click To Sign Up" />
       <Label contentDisplay="TOP" prefHeight="63.0" prefWidth="250.0" text="Password Must Contain 2 Or More of &quot;!,@,#,$,%,^,&amp;,*,&quot; and Contain 10 or More Characters" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="logInPageButton" mnemonicParsing="false" onAction="#onLogInPageButtonClick" text="Already Have An Account? Click To Sign In" />
