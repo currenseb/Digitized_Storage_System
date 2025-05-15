@@ -3,6 +3,7 @@ import com.example.cs210finalproject.User;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+// author: Curren Sebastian <currenseb7@gmail.com>
 public class ProfilePageTests {
 
     @Test
