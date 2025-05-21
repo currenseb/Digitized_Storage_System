@@ -3,7 +3,7 @@ import com.example.cs210finalproject.User;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-// author: Matthew Ho
+// author: Matthew Ho <ssoohoya@gmail.com>
 public class SignUpPageTests {
 
     private final String testUsername = "testUser";
