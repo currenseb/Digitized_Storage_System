@@ -1,7 +1,12 @@
 package com.example.cs210finalproject;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
 import java.awt.Desktop;
+import java.nio.file.Files;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class UserFile {
     // Variables
@@ -33,11 +38,42 @@ public class UserFile {
 
     public void openWithDefaultApp() throws IOException {
         File file = new File(filePath); // <-- Use full path
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String now = LocalDateTime.now().format(timeFormat);
+
         if (!file.exists()) {
             file.getParentFile().mkdirs(); // Ensure folders exist
             file.createNewFile();
-            System.out.println("Created a new File at: " + filePath);
+
+            try (FileWriter writer = new FileWriter(file)) {
+                writer.write("File Path: " + filePath + System.lineSeparator());
+                writer.write("Owner: " + ownerUsername + System.lineSeparator());
+                writer.write("Created on: " + now + System.lineSeparator());
+                writer.write("Last Saved on: " + now + System.lineSeparator());
+                writer.write("※ Please remember to save the file (Ctrl + S) before closing." + System.lineSeparator());
+                writer.write(System.lineSeparator());
+                writer.write("----------------------------------------" + System.lineSeparator());
+                writer.write("[Write your content below this line]" + System.lineSeparator());
+                writer.write("----------------------------------------" + System.lineSeparator());
+                writer.write(System.lineSeparator());
+
+                System.out.println("Created a new File at: " + filePath);
+            }
+
+        } else {
+            List<String> lines = Files.readAllLines(file.toPath());
+            try (FileWriter writer = new FileWriter(file)) {
+                for (String line : lines) {
+                    if (line.startsWith("Last Saved on:")) {
+                        writer.write("Last Saved on: " + now + System.lineSeparator());
+                    } else {
+                        writer.write(line + System.lineSeparator());
+                    }
+                }
+            }
+            System.out.println("Updated Last Saved on: " + now);
         }
+
         if (Desktop.isDesktopSupported()) {
             Desktop.getDesktop().open(file);
         } else {
