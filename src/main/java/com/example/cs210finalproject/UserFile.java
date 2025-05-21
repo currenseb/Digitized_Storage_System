@@ -1,18 +1,22 @@
 package com.example.cs210finalproject;
-
 import java.io.IOException;
 import java.io.File;
 import java.awt.Desktop;
 
 public class UserFile {
+    // Variables
+
     private String fileName;
     private String filePath;
     private String ownerUsername;
 
+    // Methods
+
+    // Full Constructor
     public UserFile(String fileName, User user) {
         this.fileName = fileName;
         this.ownerUsername = user.getUsername(); // Uses getter from User
-        this.filePath = "MainRoot/" + ownerUsername + "/" + fileName + ".txt";
+        this.filePath = "MainRoot/" + ownerUsername + "/" + fileName + ".txt"; // ensures username is within file path and therefore only this user can access this file
     }
 
     public String getFileName() {
@@ -51,8 +55,4 @@ public class UserFile {
         }
     }
 
-    public String createFilePath() {
-        this.filePath = "MainRoot/" + ownerUsername + "/" + fileName + ".txt";
-        return this.filePath;
-    }
 }

@@ -2,7 +2,7 @@ package com.example.cs210finalproject;
 
 public class FilePageData {
 
-    // Variables
+    // Called in User.java and associated with each of the 5 Base File Page
     public String overallFileName = "";
     public String topLeftFileName = "";
     public String topMiddleFileName = "";

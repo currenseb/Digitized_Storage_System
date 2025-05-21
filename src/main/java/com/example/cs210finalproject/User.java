@@ -1,12 +1,13 @@
 package com.example.cs210finalproject;
-
 import java.util.HashMap;
 
 public class User {
 
+    // user information
     public String username;
     public String password;
 
+    // declares data fields from each individual data class
     public HomePageData homePageData;
     public FilePageData file1Data;
     public FilePageData file2Data;
@@ -16,7 +17,7 @@ public class User {
     public NotificationData notificationData;
     public ProfilePageData profilePageData;
 
-    // Constructor
+    // Full Constructor
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -33,24 +34,26 @@ public class User {
         this.file5Data = new FilePageData();
     }
 
-
     public String getUsername() {
         return this.username;
     }
 
-    // Static user database
+    // Static user database using a HashMap. Needs to be static so that way user data can be loaded no matter where they are in the application.
+    // Next goal is to put this HashMap onto an online database so that way data can save despite termination of application
     public static HashMap<String, User> userDatabase = new HashMap<>();
 
-    // Sign up method
+    // Static Sign up method
     public static boolean signUp(String username, String password) {
-        if (userDatabase.containsKey(username)) return false;
+        if (userDatabase.containsKey(username)) {
+            return false; // ensures no duplicate users
+        }
         userDatabase.put(username, new User(username, password));
         return true;
     }
 
-    // Log in method
+    // Static Log in method
     public static User logIn(String username, String password) {
-        User user = userDatabase.get(username);
+        User user = userDatabase.get(username); // loads user data
         if (user != null && user.password.equals(password)) {
             return user;
         }

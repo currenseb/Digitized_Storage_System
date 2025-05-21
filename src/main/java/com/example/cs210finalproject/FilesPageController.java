@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import java.io.IOException;
 
-
 public class FilesPageController {
 
     // Variables
@@ -93,12 +92,14 @@ public class FilesPageController {
 
     // Methods
 
+    // setter method to associate current user's data to specific file page
     public void setUser(User user, FilePageData fileData) {
         this.currentUser = user;
         this.dataModel = fileData;
         loadDataIntoFields();
     }
 
+    // loads data
     private void loadDataIntoFields() {
         overallFileName.setText(dataModel.overallFileName);
         topLeftFileName.setText(dataModel.topLeftFileName);
@@ -112,6 +113,7 @@ public class FilesPageController {
         bottomRightFileName.setText(dataModel.bottomRightFileName);
     }
 
+    // saves data
     private void saveDataIntoModel() {
         dataModel.overallFileName = overallFileName.getText().trim();
         dataModel.topLeftFileName = topLeftFileName.getText().trim();
@@ -127,11 +129,13 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessTopLeftFileButtonClick() {
+        // puts what user entered into the field then sets and saves into the dataModel
         String fileName = topLeftFileName.getText().trim();
         dataModel.topLeftFileName = fileName;
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -140,17 +144,19 @@ public class FilesPageController {
             }
         }
 
-        saveDataIntoModel(); // ✅ Save current state
+        saveDataIntoModel();
     }
 
 
     @FXML
     protected void onAccessTopMiddleFileButtonClick() {
+        // puts what user entered into the field then sets and saves into the dataModel
         String fileName = topMiddleFileName.getText().trim();
         dataModel.topMiddleFileName = fileName;
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -165,11 +171,13 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessTopRightFileButtonClick() {
+        // puts what user entered into the field then sets and saves into the dataModel
         String fileName = topRightFileName.getText().trim();
         dataModel.topRightFileName = fileName;
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -184,11 +192,13 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessMiddleLeftFileButtonClick() {
+        // puts what user entered into the field then sets and saves into the dataModel
         String fileName = middleLeftFileName.getText().trim();
         dataModel.middleLeftFileName = fileName;
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -203,11 +213,13 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessMiddleMiddleFileButtonClick() {
+        // puts what user entered into the field then sets and saves into the dataModel
         String fileName = middleMiddleFileName.getText().trim();
         dataModel.middleMiddleFileName = fileName;
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -222,11 +234,13 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessMiddleRightFileButtonClick() {
+        // puts what user entered into the field then sets and saves into the dataModel
         String fileName = middleRightFileName.getText().trim();
         dataModel.middleRightFileName = fileName;
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -246,6 +260,7 @@ public class FilesPageController {
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -260,11 +275,13 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessBottomMiddleFileButtonClick() {
+        // puts what user entered into the field then sets and saves into the dataModel
         String fileName = bottomMiddleFileName.getText().trim();
         dataModel.bottomMiddleFileName = fileName;
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -279,11 +296,13 @@ public class FilesPageController {
 
     @FXML
     protected void onAccessBottomRightFileButtonClick() {
+        // puts what user entered into the field then sets and saves into the dataModel
         String fileName = bottomRightFileName.getText().trim();
         dataModel.bottomRightFileName = fileName;
 
         if (!fileName.isEmpty()) {
             UserFile file = new UserFile(fileName, currentUser);
+            // creates file with username integrated into file path
             try {
                 file.openWithDefaultApp();
             } catch (Exception e) {
@@ -298,17 +317,17 @@ public class FilesPageController {
 
     @FXML
     protected void onHomePageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Parent root = loader.load();
 
             HomePageController controller = loader.getController();
-            controller.setUser(currentUser);
+            controller.setUser(currentUser); // loads user's data into page
 
             Stage stage = (Stage) homePageButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 360, 375)); // Adjust if needed
+            stage.setScene(new Scene(root, 360, 375));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -318,14 +337,14 @@ public class FilesPageController {
 
     @FXML
     protected void onNotificationPageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
             Parent root = loader.load();
 
             NotificationController controller = loader.getController();
-            controller.setUser(currentUser);
+            controller.setUser(currentUser); // loads user's data into page
 
             Stage stage = (Stage) notificationPageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 350, 450));
@@ -338,14 +357,14 @@ public class FilesPageController {
 
     @FXML
     protected void onProfilePageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
             Parent root = loader.load();
 
             ProfilePageController controller = loader.getController();
-            controller.setUser(currentUser);
+            controller.setUser(currentUser); // loads user's data into page
 
             Stage stage = (Stage) profilePageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 425, 475));
@@ -357,7 +376,7 @@ public class FilesPageController {
 
     @FXML
     protected void onLogInPageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
@@ -373,11 +392,11 @@ public class FilesPageController {
 
     @FXML
     protected void onSignUpPageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
-            Scene scene = new Scene(loader.load(), 360, 375);
+            Scene scene = new Scene(loader.load(), 250, 350);
 
             Stage stage = (Stage) signUpPageButton.getScene().getWindow();
             stage.setScene(scene);

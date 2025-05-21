@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+// Base Notification Page GUI
 public class NotificationPage extends Application {
     @Override
     public void start(Stage stage) throws IOException {

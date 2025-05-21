@@ -14,6 +14,7 @@ public class NotificationController {
 
     // Variables
 
+    // delcares user and notification data for the page
     private User currentUser;
     private NotificationData dataModel;
 
@@ -58,6 +59,7 @@ public class NotificationController {
 
     // Methods
 
+    // set user method
     public void setUser(User user) {
         this.currentUser = user;
         this.dataModel = user.notificationData;
@@ -65,6 +67,7 @@ public class NotificationController {
     }
 
     private void loadDataIntoFields() {
+        // loads from the data model what user put into text fields
         reminder1Text.setText(dataModel.reminder1Text);
         reminder1Date.setText(dataModel.reminder1Date);
         reminder2Text.setText(dataModel.reminder2Text);
@@ -74,6 +77,7 @@ public class NotificationController {
     }
 
     private void saveDataIntoModel() {
+        // saves what user enters into the text fields
         if (reminder1Text != null && reminder1Text.getText() != null)
             dataModel.reminder1Text = reminder1Text.getText().trim();
         else
@@ -105,11 +109,9 @@ public class NotificationController {
             dataModel.reminder3Date = "";
     }
 
-
-
     @FXML
     protected void onReminder1ButtonClick() {
-        // ✅ Safely save the reminder text and date into the user’s model
+        // saves the reminder text and date into the user’s data model
         if (reminder1Text != null && reminder1Text.getText() != null)
             dataModel.reminder1Text = reminder1Text.getText().trim();
         else
@@ -125,7 +127,7 @@ public class NotificationController {
 
     @FXML
     protected void onReminder2ButtonClick() {
-        // ✅ Safely save the reminder text and date into the user’s model
+        // saves the reminder text and date into the user’s data model
         if (reminder2Text != null && reminder2Text.getText() != null)
             dataModel.reminder2Text = reminder2Text.getText().trim();
         else
@@ -140,7 +142,7 @@ public class NotificationController {
 
     @FXML
     protected void onReminder3ButtonClick() {
-        // ✅ Safely save the reminder text and date into the user’s model
+        // saves the reminder text and date into the user’s data model
         if (reminder3Text != null && reminder3Text.getText() != null)
             dataModel.reminder3Text = reminder3Text.getText().trim();
         else
@@ -155,14 +157,14 @@ public class NotificationController {
 
     @FXML
     protected void onHomePageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Parent root = loader.load();
 
             HomePageController controller = loader.getController();
-            controller.setUser(currentUser);
+            controller.setUser(currentUser); // loads user's data into page
 
             Stage stage = (Stage) homePageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 360, 375)); // Adjust if needed
@@ -175,14 +177,14 @@ public class NotificationController {
 
     @FXML
     protected void onProfilePageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
             Parent root = loader.load();
 
             ProfilePageController controller = loader.getController();
-            controller.setUser(currentUser);
+            controller.setUser(currentUser); // loads user's data into page
 
             Stage stage = (Stage) profilePageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 425, 475));
@@ -195,7 +197,7 @@ public class NotificationController {
 
     @FXML
     protected void onLogInPageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
@@ -212,7 +214,7 @@ public class NotificationController {
 
     @FXML
     protected void onSignUpPageButtonClick() {
-        saveDataIntoModel();
+        saveDataIntoModel(); // makes sure data is saved before leaving page
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));

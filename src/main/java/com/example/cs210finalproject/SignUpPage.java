@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+// Base Sign Up Page GUI
+// Start Application From Here To Ensure Every Feature Works
 public class SignUpPage extends Application {
     @Override
     public void start(Stage stage) throws IOException {

@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.cs210finalproject/com.example.cs210finalproject.LoginInPage
+                            <mainClass>com.example.cs210finalproject/com.example.cs210finalproject.GUIPages.LoginInPage
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

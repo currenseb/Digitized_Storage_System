@@ -54,15 +54,15 @@ public class ProfilePageController {
 
     // Methods
 
-    // ✅ Set user object
+    // set user method
     public void setUser(User user) {
         this.currentUser = user;
         loadDataIntoFields();
     }
 
     private void loadDataIntoFields() {
-        userUsername.setText("••••••••");
-        userPassword.setText("••••••••");
+        userUsername.setText("••••••••"); // loads "••••••••" for privacy
+        userPassword.setText("••••••••"); // loads "••••••••" for privacy
     }
 
     @FXML
@@ -72,7 +72,7 @@ public class ProfilePageController {
 
     @FXML
     public void onChangeUsernameButtonClick() { // Only Public For Internal Unit Testing, otherwise private
-        String newUsername = newUserUsername.getText().trim();
+        String newUsername = newUserUsername.getText().trim(); // assigns what user entered into text field as new username
         if (!newUsername.isEmpty()) {
             String oldUsername = currentUser.username;
 
@@ -81,10 +81,10 @@ public class ProfilePageController {
             currentUser.username = newUsername;
 
             // Update the userDatabase key
-            User user = User.userDatabase.remove(oldUsername);  // remove old hashmap key
-            User.userDatabase.put(newUsername, user);           // add new hashmap key
+            User user = User.userDatabase.remove(oldUsername); // remove old hashmap key
+            User.userDatabase.put(newUsername, user); // add new hashmap key
 
-            // Update UI
+            // for privacy
             userUsername.setText("••••••••");
             newUserUsername.clear();
         }
@@ -98,11 +98,12 @@ public class ProfilePageController {
 
     @FXML
     public void onChangePasswordButtonClick() { // Only Public For Internal Unit Testing, otherwise private
-        String newPassword = newUserPassword.getText().trim();
+        String newPassword = newUserPassword.getText().trim(); // assigns what user entered into text field as new password
         if (!newPassword.isEmpty()) {
             currentUser.profilePageData.password = newPassword;
             currentUser.password = newPassword;
 
+            // for privacy
             userPassword.setText("••••••••");
             newUserPassword.clear();
         }
@@ -111,13 +112,14 @@ public class ProfilePageController {
 
     @FXML
     protected void onHomePageButtonClick() {
+        // no saveDataIntoModel method becuase the only thing changed is saved when clicking change password or username
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Parent root = loader.load();
 
             HomePageController controller = loader.getController();
-            controller.setUser(currentUser);
+            controller.setUser(currentUser); // loads user's data into page
 
             Stage stage = (Stage) homePageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 360, 375)); // Adjust if needed
@@ -130,13 +132,14 @@ public class ProfilePageController {
 
     @FXML
     protected void onNotificationPageButtonClick() {
+        // no saveDataIntoModel method becuase the only thing changed is saved when clicking change password or username
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
             Parent root = loader.load();
 
             NotificationController controller = loader.getController();
-            controller.setUser(currentUser);
+            controller.setUser(currentUser); // loads user's data into page
 
             Stage stage = (Stage) notificationPageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 350, 450));
@@ -150,6 +153,7 @@ public class ProfilePageController {
 
     @FXML
     protected void onLogInPageButtonClick() {
+        // no saveDataIntoModel method becuase the only thing changed is saved when clicking change password or username
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
@@ -166,10 +170,11 @@ public class ProfilePageController {
 
     @FXML
     protected void onSignUpPageButtonClick() {
+        // no saveDataIntoModel method becuase the only thing changed is saved when clicking change password or username
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
-            Scene scene = new Scene(loader.load(), 360, 375);
+            Scene scene = new Scene(loader.load(), 250, 350);
 
             Stage stage = (Stage) signUpPageButton.getScene().getWindow();
             stage.setScene(scene);
@@ -191,7 +196,7 @@ public class ProfilePageController {
         }
     }
 
-    // Only used for unit testing — bypasses JavaFX fieldsFop
+    // Only used for unit testing — bypasses JavaFX fields
     public void changePasswordForTest(String newPassword) {
         if (!newPassword.isEmpty()) {
             currentUser.profilePageData.password = newPassword;

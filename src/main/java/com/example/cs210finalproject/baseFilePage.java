@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+// Base File Page GUI
 public class baseFilePage extends Application {
     @Override
     public void start(Stage stage) throws IOException {

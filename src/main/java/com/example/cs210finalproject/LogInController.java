@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class LogInController {
@@ -26,32 +25,37 @@ public class LogInController {
     private Button signUpPageButton;
 
     // Methods
+
     @FXML
     protected void onLogInPageButtonClick() {
+        // assigns entered text as user information
         String username = usernameLogIn.getText().trim();
         String password = passwordLogIn.getText().trim();
 
         if (username.isEmpty() || password.isEmpty()) {
-            return; // Skip if fields are blank
+            return;
         }
 
+        // calls static log in class and saves data
         User user = User.logIn(username, password);
+
+        // passes data if user exists
         if (user != null) {
             user.profilePageData.username = username;
             user.profilePageData.password = password;
         }
 
         if (user == null) {
-            return; // Invalid credentials
+            return;
         }
 
-        // Success — navigate to HomePage with user
+        // opens home page GUI after a successful log in
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Parent root = loader.load();
 
             HomePageController controller = loader.getController();
-            controller.setUser(user);
+            controller.setUser(user); // loads user's data into page
 
             Stage stage = (Stage) logInPageButton.getScene().getWindow();
             stage.setScene(new Scene(root, 360, 375));
@@ -61,7 +65,7 @@ public class LogInController {
         }
     }
 
-    // Navigate to Sign Up page
+    // Sign Up page if user does not have an account
     @FXML
     protected void onSignUpPageButtonClick() {
         try {

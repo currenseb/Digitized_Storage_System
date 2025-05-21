@@ -27,6 +27,7 @@ public class SignUpController {
 
     // Methods
 
+    // ensures user creates a safe password
     private boolean isValidPassword(String password) {
         if (password.length() < 10) {
             return false;
@@ -41,14 +42,12 @@ public class SignUpController {
                 count++;
             }
         }
-
         return count >= 2;
     }
 
-
-
     @FXML
     protected void onSignUpButtonClick() {
+        // assigns entered text as user information
         String username = usernameSignUp.getText().trim();
         String password = passwordSignUp.getText().trim();
 
@@ -57,16 +56,16 @@ public class SignUpController {
         }
 
         if (!isValidPassword(password)) {
-            return; // Password doesn't meet criteria
+            return; // Password meets security criteria
         }
 
-        boolean success = User.signUp(username, password);
+        boolean success = User.signUp(username, password); // calls static sign up method
 
         if (!success) {
-            return; // Username already exists
+            return;
         }
 
-        // Successfully signed up — get user and go to HomePage
+        // Successfully signed up, now assign user data and go to HomePage
         User newUser = User.userDatabase.get(username);
         newUser.profilePageData.username = username;
         newUser.profilePageData.password = password;
@@ -76,7 +75,7 @@ public class SignUpController {
             Parent root = loader.load();
 
             HomePageController controller = loader.getController();
-            controller.setUser(newUser);
+            controller.setUser(newUser); // loads user's data into page
 
             Stage stage = (Stage) signUpButton.getScene().getWindow();
             stage.setScene(new Scene(root, 360, 375));
@@ -86,6 +85,7 @@ public class SignUpController {
         }
     }
 
+    // opens log in page if user already has an account
     @FXML
     void onLogInPageButtonClick() {
         try {

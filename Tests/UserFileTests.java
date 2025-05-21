@@ -1,10 +1,12 @@
+import com.example.cs210finalproject.User;
+import com.example.cs210finalproject.UserFile;
 import org.junit.jupiter.api.*;
 import java.io.File;
 import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserFileTest {
+// author: JuanCarols Ramos
+class UserFileTests {
 
     private static final String USERNAME = "testuser";
     private static final String PASSWORD = "pass123";

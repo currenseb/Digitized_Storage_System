@@ -2,7 +2,7 @@ package com.example.cs210finalproject;
 
 public class ProfilePageData {
 
-    //Variables
+    // Called in User.java and declares the users information
     public String username;
     public String password;
 }

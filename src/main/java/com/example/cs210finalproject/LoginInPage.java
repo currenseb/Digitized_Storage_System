@@ -1,12 +1,11 @@
 package com.example.cs210finalproject;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+// Base Log In Page GUI
 public class LoginInPage extends Application {
     @Override
     public void start(Stage stage) throws IOException {

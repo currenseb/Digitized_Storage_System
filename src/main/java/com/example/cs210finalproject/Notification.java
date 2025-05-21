@@ -7,6 +7,7 @@ public class Notification {
     private String reminderDate = "";
     private String reminderFilePath = "";
 
+    // Full Constructor
     public Notification(String reminderText, String reminderDate, String reminderFilePath) {
         this.reminderText = reminderText;
         this.reminderDate = reminderDate;
