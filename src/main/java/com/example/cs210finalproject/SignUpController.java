@@ -28,7 +28,8 @@ public class SignUpController {
     // Methods
 
     // ensures user creates a safe password
-    private boolean isValidPassword(String password) {
+    // static so profile page can access
+    public static boolean isValidPassword(String password) {
         if (password.length() < 10) {
             return false;
         }
