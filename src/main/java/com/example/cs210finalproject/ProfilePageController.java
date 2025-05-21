@@ -99,7 +99,7 @@ public class ProfilePageController {
     @FXML
     public void onChangePasswordButtonClick() { // Only Public For Internal Unit Testing, otherwise private
         String newPassword = newUserPassword.getText().trim(); // assigns what user entered into text field as new password
-        if (!newPassword.isEmpty()) {
+        if (!newPassword.isEmpty() && SignUpController.isValidPassword(newPassword)) {
             currentUser.profilePageData.password = newPassword;
             currentUser.password = newPassword;
 
