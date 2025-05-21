@@ -32,7 +32,7 @@ Click "Home Page" to see a snapshot of your most recent files. This data is pull
 Click **Open File**, then enter a file name, and click "Access File". If the file doesn't exist, it will be created and opened.
 
 <img src="screenshots/filespage.png" alt="Login Screen" width="250"/>
-<img src="screenshots/txtexample.png" alt="Login Screen" width="250"/>
+<img src="screenshots/txtexample.png" alt="Login Screen" width="450"/>
 
 ---
 
