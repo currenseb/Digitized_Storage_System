@@ -1,6 +1,6 @@
 ﻿# 📁 Digital Storage System
 
-A JavaFX desktop application that helps users manage and organize their personal files in a simple, user-friendly interface. This app allows users to create and open virtual files, save data across different pages, and navigate between multiple sections such as Home, Files, Notifications, and Profile. Built with JavaFX and FXML, this project focuses on clean architecture, persistence, and usability.
+A JavaFX desktop application that helps users manage and organize their personal files in a simple, user-friendly interface. This app allows users to create and open virtual files, save data across different pages, and navigate between multiple sections such as Home, Files, Notifications, and Profile. Built with JavaFX and FXML, this project focuses on clean architecture, persistence, and usability. 
 
 ---
 
